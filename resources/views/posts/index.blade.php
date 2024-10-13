@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">All Posts</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}">All Posts</a>
                     </li>
                 </ul>
             </div>
@@ -29,13 +29,13 @@
     </nav>
 
     <!-- Create Post Button -->
-    <div class="container text-center mt-5">
+    <div class="container text-center mt-3">
         <button type="button" class="btn btn-success"> Create Post </button>
     </div>
 
 
     <!-- Posts Table -->
-    <div class="container mt-5">
+    <div class="container mt-3">
         <table class="table">
             <thead>
                 <tr>
@@ -55,9 +55,9 @@
                     <td> {{$post['created_by']}} </td>
                     <td> {{$post['created_at']}} </td>
                     <td>
-                        <button type="button" class="btn btn-info"> View </button>
-                        <button type="button" class="btn btn-primary"> Edit </button>
-                        <button type="button" class="btn btn-danger"> Delete </button>
+                        <a href="{{route('posts.show', $post['id'] )}}" class="btn btn-info"> View </a>
+                        <a href="#" class="btn btn-primary"> Edit </a>
+                        <a href="#" class="btn btn-danger"> Delete </a>
                     </td>
                 </tr>
                 @endforeach
