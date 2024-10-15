@@ -36,4 +36,13 @@ class PostController extends Controller
 
         return view('posts.show', ['post' => $selectedPost]);
     }
+
+
+    public function create() {
+
+        return view('posts.create');
+    }
+
+
+
 }

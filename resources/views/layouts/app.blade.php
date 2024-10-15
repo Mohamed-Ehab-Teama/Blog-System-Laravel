@@ -29,8 +29,8 @@
     </nav>
 
 
-    <!-- Posts Table -->
-    <div class="container mt-3">
+
+    <div class="container mt-4">
 
         @yield('content')
 
