@@ -5,18 +5,19 @@
 @section('content')
 
 
-<form>
+<form method="POST" action=" {{route('posts.store')}} ">
+    @csrf
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label"> Title </label>
-        <input type="text" class="form-control" id="exampleInputEmail1">
+        <input name="title" type="text" class="form-control" id="exampleInputEmail1">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"> Description </label>
-        <textarea class="form-control" rows="3"></textarea>
+        <textarea name="description" class="form-control" rows="3"></textarea>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"> Post Creator </label>
-        <select class="form-control">
+        <select name="post_creator" class="form-control">
             <option value="1"> Ahmed </option>
             <option value="2"> Mohamed </option>
         </select>

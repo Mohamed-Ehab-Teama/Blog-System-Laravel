@@ -44,5 +44,22 @@ class PostController extends Controller
     }
 
 
+    public function store(){
+
+        // To get data
+        // 1-
+        $data = request()->all();
+        // dd($data);
+
+        // 2-
+        $title = request()->title;
+        $description = request()->description;
+        $post_creator = request()->post_creator;
+        // dd($title, $description, $post_creator);
+
+        return to_route('posts.store');
+    }
+
+
 
 }
