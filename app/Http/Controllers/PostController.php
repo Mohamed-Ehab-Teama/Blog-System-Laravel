@@ -61,5 +61,11 @@ class PostController extends Controller
     }
 
 
+    public function edit(){
+
+        return view('posts.edit');
+    }
+
+
 
 }
