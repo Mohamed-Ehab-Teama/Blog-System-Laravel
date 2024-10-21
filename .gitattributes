@@ -1,11 +1,19 @@
+# Automatically convert text files to CRLF on checkout, and back to LF on commit.
 * text=auto eol=lf
 
-*.blade.php diff=html
-*.css diff=css
-*.html diff=html
-*.md diff=markdown
-*.php diff=php
+# Force specific file types to use LF line endings (common for cross-platform code)
+*.php text eol=lf
+*.blade.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
 
-/.github export-ignore
-CHANGELOG.md export-ignore
-.styleci.yml export-ignore
+# Binary files should not be modified (no line-ending conversion)
+*.png binary
+*.jpg binary
+*.gif binary
+*.pdf binary
+
+# Handle Windows-specific scripts with CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
