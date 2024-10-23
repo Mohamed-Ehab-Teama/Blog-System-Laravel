@@ -80,4 +80,11 @@ class PostController extends Controller
     }
 
 
+    public function destroy() {
+        
+
+        return to_route('posts.index');
+    }
+
+
 }
