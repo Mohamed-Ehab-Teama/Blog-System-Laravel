@@ -67,5 +67,17 @@ class PostController extends Controller
     }
 
 
+    public function update() {
+
+        // Get Data from the form
+        $title = request()->title;
+        $description = request()->description;
+        $post_creator = request()->post_creator;
+        
+        // dd($title, $description, $post_creator);
+
+        return to_route('posts.update',1);
+    }
+
 
 }

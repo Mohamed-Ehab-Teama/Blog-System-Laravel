@@ -8,8 +8,9 @@ Edit
 
 @section('content')
 
-    <form>
+    <form method="post" action="{{route('posts.update',1)}}">
         @csrf
+        @method('put')
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"> Title </label>
             <input name="title" type="text" class="form-control" id="exampleInputEmail1">
