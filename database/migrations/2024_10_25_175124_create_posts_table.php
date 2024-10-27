@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title'); // VARCHAR title
             $table->text('description'); // TEXT description
-            $table->timestamps();
+            $table->timestamps();   // By default create two columns : created_at , updated_at
         });
     }
 
