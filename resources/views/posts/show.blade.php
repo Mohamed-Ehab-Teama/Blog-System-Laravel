@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"> Tilte : {{ $post->title }} </h4>
-            <p class="card-text"> Description : {{ $post->description }} </p>
+        <p class="card-text"> Description : {{ $post->description }} </p>
     </div>
 </div>
 </div>

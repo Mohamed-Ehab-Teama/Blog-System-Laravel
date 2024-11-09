@@ -21,13 +21,23 @@ class PostController extends Controller
     }
 
 
-    public function show( $postId )
+    public function show( Post $post )  // type hinting
     {
+
+        // dd($post);
 
         // Get Single Post
 
         // 1-
-        $selectedPost = Post::find($postId);
+        // $selectedPost = Post::find($postId);
+        
+            // To avoid that the data is not existed:
+            // 1-
+            // $selectedPost = Post::findOrFail($postId);
+            // 2-
+            // if ( is_null( $selectedPost ) ){
+            //     return to_route('posts.index');
+            // }
 
         // 2-
         // $selectedPost = Post::where('id', $postId)->first();
@@ -36,7 +46,7 @@ class PostController extends Controller
         // $selectedPost = Post::where('id', $postId)->get();
         // dd($selectedPost);
 
-        return view('posts.show', ['post' => $selectedPost]);
+        return view('posts.show', ['post' => $post]);
     }
 
 
