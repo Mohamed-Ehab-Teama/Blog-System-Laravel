@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -52,7 +53,11 @@ class PostController extends Controller
 
     public function create() {
 
-        return view('posts.create');
+        $users = User::all();
+        // dd($users);
+
+        
+        return view('posts.create', ['users' => $users]);
     }
 
 
@@ -69,31 +74,66 @@ class PostController extends Controller
         $post_creator = request()->post_creator;
         // dd($title, $description, $post_creator);
 
+        // Store Syntax 1
+            // $post = new Post;
+            // $post->title = $title;
+            // $post->description = $description;
+            // $post->save();
+
+        // Store Syntax 2
+            Post::create([
+                'title' => $title,
+                'description' => $description,
+            ]);
+
         return to_route('posts.store');
     }
 
 
-    public function edit(){
+    public function edit(Post $post){
 
-        return view('posts.edit');
+        $users = User::all();
+
+        // dd($post);
+
+        return view('posts.edit', [ 'users' => $users, 'post' => $post ]);
     }
 
 
-    public function update() {
+    public function update( Post $post ) {
 
         // Get Data from the form
         $title = request()->title;
         $description = request()->description;
         $post_creator = request()->post_creator;
-        
         // dd($title, $description, $post_creator);
+        
+        // Get the row
+        // dd($post);
+        // $post = Post::find($post->id);
+        // dd($post);
 
-        return to_route('posts.update',1);
+
+        // Update the row
+        $post->update([
+            'title' => $title,
+            'description' => $description,
+        ]);
+
+
+        return to_route('posts.update',$post->id);
     }
 
 
-    public function destroy() {
+    public function destroy(Post $post) {
         
+        // Get Row
+        // dd($post);
+        // $post = Post::find($post->id);
+        // dd($post);
+
+        // Delete the Row
+        $post->delete();
 
         return to_route('posts.index');
     }

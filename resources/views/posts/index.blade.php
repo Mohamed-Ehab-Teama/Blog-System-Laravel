@@ -37,7 +37,7 @@
                 <a href="{{route('posts.show', $post->id )}}" class="btn btn-info"> View </a>
                 <a href="{{route('posts.edit', $post->id )}}" class="btn btn-primary"> Edit </a>
 
-                <form style=" display: inline; " method="post" action="{{route('posts.destroy',1)}}">
+                <form style=" display: inline; " method="post" action="{{route('posts.destroy', $post->id)}}">
                     @csrf
                     @method('DELETE')
 
