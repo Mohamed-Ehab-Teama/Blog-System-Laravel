@@ -84,6 +84,7 @@ class PostController extends Controller
             Post::create([
                 'title' => $title,
                 'description' => $description,
+                'user_id' => $post_creator,
             ]);
 
         return to_route('posts.store');
@@ -118,6 +119,7 @@ class PostController extends Controller
         $post->update([
             'title' => $title,
             'description' => $description,
+            'user_id' => $post_creator,
         ]);
 
 
