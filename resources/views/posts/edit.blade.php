@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('title')
 Edit
@@ -10,14 +10,27 @@ Edit
 
 <form method="post" action="{{route('posts.update',$post->id)}}">
     @csrf
+
+    <!-- Show Errors -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
     @method('put')
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label"> Title </label>
-        <input name="title" type="text" class="form-control" value="{{$post->title}}" id="exampleInputEmail1">
+        <input name="title" type="text" class="form-control" value="{{old('title') ? old('title') : $post->title  }}" id="exampleInputEmail1">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"> Description </label>
-        <textarea name="description" class="form-control" rows="3">{{$post->description}}</textarea>
+        <textarea name="description" class="form-control" rows="3">{{old('description') ? old('description') : $post->description  }}</textarea>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"> Post Creator </label>

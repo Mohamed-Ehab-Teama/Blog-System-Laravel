@@ -63,6 +63,15 @@ class PostController extends Controller
 
     public function store(){
 
+        // Make Validations:
+        request()->validate([
+            'title' => ['required', 'min:3', 'max:30'],
+            'description' => ['required', 'min:5'],
+            'post_creator' => ['required', 'exists:users,id'],
+        ]);
+
+
+
         // To get data
         // 1-
         $data = request()->all();
@@ -102,6 +111,14 @@ class PostController extends Controller
 
 
     public function update( Post $post ) {
+
+        // Make Validations
+        request()->validate([
+            'title' => ['required', 'min:3', 'max:30'],
+            'description' => ['required', 'min:5'],
+            'post_creator' => ['required', 'exists:users,id'],
+        ]);
+
 
         // Get Data from the form
         $title = request()->title;
